@@ -1,6 +1,12 @@
+import ConverterValue from "../components/ConverterValue"
+
 const MainPage = () => {
   return (
-    <div>MainPage</div>
+    <div className="main-page">
+      <div className="main-page__content">
+        <ConverterValue/>
+      </div>
+    </div>
   )
 }
 

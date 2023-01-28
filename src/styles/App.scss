@@ -1,5 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+$black-color: #141414;
+
+@mixin app-flex($ai: center, $jc: center) {
+  display: flex;
+  align-items: $ai;
+  justify-content: $jc;
+}
+
+@mixin app-font($lh, $fz) {
+  font-size: $fz;
+  line-height: $lh;
+}
+
 * {
   font-family: Inter;
+  color: $black-color;
+}
+
+body {
+  background-color: $black-color;
+}
+
+.main-page__content {
+  margin-top: 120px;
+  @include app-flex();
+}
+
+//* converter-value *//
+
+.converter-value {
+  width: 100%;
+  max-width: 780px;
+  height: 243px;
+  padding: 40px 45px;
+  border-radius: 40px;
+  background-color: #fff;
+}
+
+.converter-value__content {
+  @include app-flex(center, space-between);
+}
+
+.converter-value__content-input-wrapper {
+  @include app-flex(center, space-between);
+  padding: 0px 0px 0px 35px;
+  width: 100%;
+  max-width: 320px;
+  height: 60px;
+  border: 1px solid #E1E3E9;
+  background-color: transparent;
+  border-radius: 40px;
+}
+
+.converter-value__content-input {
+  max-width: 200px;
+  padding-right: 20px;
+  height: 100%;
+  text-align: right;
+  border-right: solid 1px #E1E3E9;
+  @include app-font(16px, 19px);
+}
+
+.converter-value__content-btn {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  @include app-font(16px, 19px);
+}
+
+.converter-value__reverse {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../assets/reverse.svg);
 }

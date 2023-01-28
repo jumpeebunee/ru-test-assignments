@@ -1,6 +1,10 @@
+import AppNavigation from "./components/AppNavigation"
+
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <AppNavigation/>
+    </div>
   )
 }
 

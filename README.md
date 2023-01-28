@@ -1,1 +1,0 @@
-# ru-test-assignments

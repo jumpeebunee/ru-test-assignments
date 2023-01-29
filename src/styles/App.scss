@@ -79,3 +79,10 @@ body {
   background-repeat: no-repeat;
   background-image: url(../assets/reverse.svg);
 }
+
+.converter-value__list {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: start;
+}

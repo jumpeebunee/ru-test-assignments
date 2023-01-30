@@ -5,14 +5,14 @@ import ConverterInput from "./ConverterInput"
 
 const ConverterValue = () => {
 
-  const [convertTo, setConvertTo] = useState('');
-  const [convertFrom, setConvertFrom] = useState('');
+  const CONVERT_FROM = 'usd';
+  const CONVERT_TO = 'rub';
+
+  const [convertTo, setConvertTo] = useState(CONVERT_FROM);
+  const [convertFrom, setConvertFrom] = useState(CONVERT_TO);
   const [convertFromValue, setConvertFromValue] = useState(1);
   const [convertToValue, setConvertToValue] = useState(0);
   const [dataSymbols, setDataSymbols] = useState<ISymbols[]>([]);
-
-  const CONVERT_FROM = 'usd';
-  const CONVERT_TO = 'rub';
 
   const data = {
     "success": true,
@@ -35,45 +35,57 @@ const ConverterValue = () => {
   useEffect(() => {
     const newData = [];
     for (let [key,val] of Object.entries(data.symbols)) {
-      if (!convertFrom && key === CONVERT_FROM) setConvertFrom(CONVERT_FROM);
-      if (!convertTo && key === CONVERT_TO) setConvertTo(CONVERT_TO);
       newData.push({abbr: key, country: val});
     }
     setDataSymbols(newData);
   },[])
 
+  useMemo(async () => {
+    if (convertFrom === convertTo) {
+      console.log('yes!')
+    }
+    fetchValues();
+  }, [convertTo, convertFrom])
+
   const fetchValues = async() => {
     if (convertFrom && convertTo) {
-      console.log('Zaprops')
       const resolve = await axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${convertFrom}/${convertTo}.json`);
       setConvertToValue(convertFromValue * resolve.data[convertTo]);
     }
   }
 
-  useMemo(async () => {
-    fetchValues();
-  }, [convertTo, convertFrom])
+  const changeConvertFrom = (abbr: string) => {
+    if (convertTo === abbr) {
+      setConvertTo(convertFrom);
+    }
+    setConvertFrom(abbr);
+  }
+
+  const changeConvertTo = (abbr: string) => {
+    if (convertFrom === abbr) {
+      setConvertFrom(convertTo);
+    }
+    setConvertTo(abbr);
+  }
 
   return (
     <div className="converter-value">
       <div className="converter-value__content">
         <ConverterInput
           symbol={convertFrom}
-          setConvertFrom={setConvertFrom}
-          setConvertTo={setConvertTo}
+          changeConvert={changeConvertFrom}
           totalSymbols={dataSymbols}
           convertValue={convertFromValue}
-          setConverValue={setConvertFromValue}
+          setConvertValue={setConvertFromValue}
           fetchValues={fetchValues}
         />
         <button className="converter-value__reverse"></button>
         <ConverterInput
           symbol={convertTo}
-          setConvertFrom={setConvertTo}
-          setConvertTo={setConvertTo}
+          changeConvert={changeConvertTo}
           totalSymbols={dataSymbols}
           convertValue={convertToValue}
-          setConverValue={setConvertToValue}
+          setConvertValue={setConvertToValue}
           fetchValues={fetchValues}
         />
       </div>

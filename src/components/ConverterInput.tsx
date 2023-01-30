@@ -5,13 +5,12 @@ interface ConverterInputProps {
   symbol: string,
   totalSymbols: ISymbols[],
   convertValue: number,
-  setConvertFrom: (arg: string) => void,
-  setConvertTo: (arg: string) => void,
-  setConverValue: (arg: number) => void,
+  changeConvert: (arg: string) => void,
+  setConvertValue: (arg: number) => void,
   fetchValues: () => void,
 }
 
-const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymbols, setConvertFrom, setConvertTo, setConverValue,fetchValues}) => {
+const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymbols, changeConvert, setConvertValue,fetchValues}) => {
 
   const [amount, setAmount] = useState(convertValue);
 
@@ -26,11 +25,7 @@ const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymb
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => { 
     if (!+e.target.value && +e.target.value !== 0) return;
-    setConverValue(+e.target.value);
-  }
-
-  const changeCurrentAbbr = (abbr: string) => {
-    if (abbr !== symbol) setConvertFrom(abbr);
+    setConvertValue(+e.target.value);
   }
 
   return (
@@ -48,7 +43,7 @@ const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymb
         {totalSymbols.map(sym => 
           <button 
             key={sym.abbr}
-            onClick={() => changeCurrentAbbr(sym.abbr)}
+            onClick={() => changeConvert(sym.abbr)}
           >{sym.abbr}</button>
         )}
       </div>

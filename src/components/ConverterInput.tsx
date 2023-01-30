@@ -29,7 +29,7 @@ const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymb
   }
 
   return (
-    <div>
+    <div className="converter-value__input">
       <div className="converter-value__content-input-wrapper">
         <input
           value={convertValue}
@@ -42,9 +42,10 @@ const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymb
       <div className="converter-value__list">
         {totalSymbols.map(sym => 
           <button 
+            className="converter-value__btn"
             key={sym.abbr}
             onClick={() => changeConvert(sym.abbr)}
-          >{sym.abbr}</button>
+          >{sym.abbr.toUpperCase()} <span></span></button>
         )}
       </div>
     </div>

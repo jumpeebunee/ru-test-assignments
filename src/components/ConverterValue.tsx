@@ -47,7 +47,7 @@ const ConverterValue = () => {
     fetchValues();
   }, [convertTo, convertFrom])
 
-  const fetchValues = async() => {
+   async function fetchValues () {
     if (convertFrom && convertTo) {
       const resolve = await axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${convertFrom}/${convertTo}.json`);
       setConvertToValue(convertFromValue * resolve.data[convertTo]);

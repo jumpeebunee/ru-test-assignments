@@ -38,6 +38,12 @@ body {
   background-color: #fff;
 }
 
+.converter-value__input {
+  width: 100%;
+  max-width: 320px;
+  position: relative;
+}
+
 .converter-value__content {
   @include app-flex(center, space-between);
 }
@@ -46,7 +52,6 @@ body {
   @include app-flex(center, space-between);
   padding: 0px 0px 0px 35px;
   width: 100%;
-  max-width: 320px;
   height: 60px;
   border: 1px solid #E1E3E9;
   background-color: transparent;
@@ -81,8 +86,22 @@ body {
 }
 
 .converter-value__list {
-  display: flex;
-  gap: 10px;
+  width: 261px;
+  padding: 20px;
+  position: absolute;
+  @include app-flex(flex-start,flex-end);
+  top: 120%;
   flex-direction: column;
-  align-items: start;
+  right: 0;
+  gap: 10px;
+  background: #FCFCFC;
+  border: 1px solid rgba(225, 227, 233, 0.4);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.converter-value__btn {
+  padding: 0;
+  background-color: transparent;
+  @include app-font(22px, 18px);
 }

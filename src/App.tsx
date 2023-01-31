@@ -1,8 +1,10 @@
+import AppHeader from "./components/AppHeader"
 import AppNavigation from "./components/AppNavigation"
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
+      <AppHeader/>
       <AppNavigation/>
     </div>
   )

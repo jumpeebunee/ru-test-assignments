@@ -22,9 +22,34 @@ body {
   background-color: $black-color;
 }
 
+.container {
+  max-width: 1185px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .main-page__content {
   margin-top: 120px;
   @include app-flex();
+}
+
+//* header *//
+
+.header__nav {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.header__list {
+  @include app-flex(center, flex-end);
+  gap: 30px;
+}
+
+.header__list-item {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
 }
 
 //* converter-value *//
@@ -139,4 +164,43 @@ body {
 .base-convert {
   margin-top: 15px;
   @include app-font(17px, 14px);
+}
+
+
+//* valutes *//
+
+.valutes__content {
+  width: 380px;
+  height: 573px;
+  padding: 35px 40px;
+  background-color: #fff;
+  border-radius: 40px;
+}
+
+.valutes__content-list {
+  display: flex;
+  flex-direction: column;
+  height: 510px;
+  overflow-y: scroll;
+  gap: 10px;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.valutes__content-item {
+  gap: 25px;
+  @include app-flex(center, flex-start);
+}
+
+.valutes__content-item-value {
+  @include app-font(22px, 18px);
+}
+
+.valutes__content-item_code {
+  width: 50px;
+}
+
+.valutes__content-item_title {
+  margin-bottom: 15px;
 }

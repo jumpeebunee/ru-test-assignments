@@ -6,8 +6,8 @@ import ValutesPage from '../pages/ValutesPage';
 const AppNavigation = () => {
   return (
     <Routes>
-      <Route path={'/'} element={<MainPage/>}></Route>
-      <Route path={'/valutes'} element={<ValutesPage/>}></Route>
+      <Route path='/' element={<MainPage/>}></Route>
+      <Route path='/valutes' element={<ValutesPage/>}></Route>
     </Routes>
   )
 }

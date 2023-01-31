@@ -57,6 +57,12 @@ const ConverterValue = () => {
     }
   }
 
+  const handleReverse = () => {
+    let [from, to] = [convertTo, convertFrom];
+    setConvertFrom(from);
+    setConvertTo(to);
+  }
+
   const changeConvertFrom = (abbr: string) => {
     if (convertTo === abbr) {
       setConvertTo(convertFrom);
@@ -85,7 +91,7 @@ const ConverterValue = () => {
           openModal={openFrom}
           closeModal={closeFrom}
         />
-        <button className="converter-value__reverse"></button>
+        <button onClick={handleReverse} className="converter-value__reverse"></button>
         <ConverterInput
           symbol={convertTo}
           changeConvert={changeConvertTo}

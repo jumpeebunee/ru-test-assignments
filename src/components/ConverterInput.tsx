@@ -70,7 +70,7 @@ const ConverterInput:FC<ConverterInputProps> = ({symbol, convertValue, totalSymb
             className="converter-value__btn"
             key={sym.abbr}
             onClick={() => changeConvert(sym.abbr)}
-          >{sym.abbr.toUpperCase()} <span></span></button>
+          ><div className="converter-value__btn-title">{sym.abbr.toUpperCase()}</div><span>{sym.country}</span></button>
         )}
       </div>
     </div>

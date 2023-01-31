@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useMemo } from "react"
 import { ISymbols } from "../types/types";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { useAppSelector } from "../app/hooks";
 import { isOpenFromModal, isOpenToModal } from "../app/feautures/modalSlice";
 import { openFrom, openTo, closeTo, closeFrom } from "../app/feautures/modalSlice";
 import ConverterInput from "./ConverterInput"
@@ -38,8 +38,6 @@ const ConverterValue = () => {
     }
   }
 
-  const dispatch = useAppDispatch();
-
   useEffect(() => {
     const newData = [];
     for (let [key,val] of Object.entries(data.symbols)) {
@@ -48,10 +46,7 @@ const ConverterValue = () => {
     setDataSymbols(newData);
   },[])
 
-  useMemo(async () => {
-    if (convertFrom === convertTo) {
-      console.log('yes!')
-    }
+  useMemo(() => {
     fetchValues();
   }, [convertTo, convertFrom])
 
@@ -74,22 +69,6 @@ const ConverterValue = () => {
       setConvertFrom(convertTo);
     }
     setConvertTo(abbr);
-  }
-
-  const openModalFrom = () => {
-    dispatch(openFrom());
-  }
-
-  const closeModalFrom = () => {
-    dispatch(closeFrom());
-  }
-
-  const openModalTo= () => {
-    dispatch(openTo());
-  }
-
-  const closeModalTo = () => {
-    dispatch(closeTo());
   }
 
   return (

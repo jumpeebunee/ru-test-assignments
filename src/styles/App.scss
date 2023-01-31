@@ -111,5 +111,18 @@ body {
 .converter-value__btn {
   padding: 0;
   background-color: transparent;
+  @include app-flex(center, flex-start);
+  gap: 10px;
   @include app-font(22px, 18px);
+
+  span {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 22px;
+    color: rgba(20, 20, 20, 0.7);
+  }
+}
+
+.converter-value__btn-title {
+  width: 50px;
 }

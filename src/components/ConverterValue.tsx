@@ -1,12 +1,18 @@
 import axios from "axios";
 import { useEffect, useState, useMemo } from "react"
 import { ISymbols } from "../types/types";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { isOpenFromModal, isOpenToModal } from "../app/feautures/modalSlice";
+import { openFrom, openTo, closeTo, closeFrom } from "../app/feautures/modalSlice";
 import ConverterInput from "./ConverterInput"
 
 const ConverterValue = () => {
 
   const CONVERT_FROM = 'usd';
   const CONVERT_TO = 'rub';
+
+  const isOpenFrom = useAppSelector(isOpenFromModal);
+  const isOpenTo = useAppSelector(isOpenToModal);
 
   const [convertTo, setConvertTo] = useState(CONVERT_FROM);
   const [convertFrom, setConvertFrom] = useState(CONVERT_TO);
@@ -31,6 +37,8 @@ const ConverterValue = () => {
       "pln": "Poland złoty",
     }
   }
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const newData = [];
@@ -68,6 +76,22 @@ const ConverterValue = () => {
     setConvertTo(abbr);
   }
 
+  const openModalFrom = () => {
+    dispatch(openFrom());
+  }
+
+  const closeModalFrom = () => {
+    dispatch(closeFrom());
+  }
+
+  const openModalTo= () => {
+    dispatch(openTo());
+  }
+
+  const closeModalTo = () => {
+    dispatch(closeTo());
+  }
+
   return (
     <div className="converter-value">
       <div className="converter-value__content">
@@ -78,6 +102,9 @@ const ConverterValue = () => {
           convertValue={convertFromValue}
           setConvertValue={setConvertFromValue}
           fetchValues={fetchValues}
+          modalOpen={isOpenFrom}
+          openModal={openFrom}
+          closeModal={closeFrom}
         />
         <button className="converter-value__reverse"></button>
         <ConverterInput
@@ -87,6 +114,9 @@ const ConverterValue = () => {
           convertValue={convertToValue}
           setConvertValue={setConvertToValue}
           fetchValues={fetchValues}
+          modalOpen={isOpenTo}
+          openModal={openTo}
+          closeModal={closeTo}
         />
       </div>
     </div>

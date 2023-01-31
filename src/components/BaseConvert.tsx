@@ -8,7 +8,7 @@ interface BaseConvertProps {
 
 const BaseConvert:FC<BaseConvertProps> = ({baseSymbol, equalValue, equalSymbol}) => {
   return (
-    <div className="base-convert">1 {baseSymbol} = {equalValue} {equalSymbol}</div>
+    <div className="converter-value__description">1 {baseSymbol} = {equalValue} {equalSymbol}</div>
   )
 }
 

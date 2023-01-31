@@ -5,6 +5,7 @@ import { useAppSelector } from "../app/hooks";
 import { isOpenFromModal, isOpenToModal } from "../app/feautures/modalSlice";
 import { openFrom, openTo, closeTo, closeFrom } from "../app/feautures/modalSlice";
 import ConverterInput from "./ConverterInput"
+import BaseConvert from "./BaseConvert";
 
 const ConverterValue = () => {
 
@@ -18,6 +19,7 @@ const ConverterValue = () => {
   const [convertFrom, setConvertFrom] = useState(CONVERT_TO);
   const [convertFromValue, setConvertFromValue] = useState(1);
   const [convertToValue, setConvertToValue] = useState(0);
+  const [standartConvert, setStandartConvert] = useState(0);
   const [dataSymbols, setDataSymbols] = useState<ISymbols[]>([]);
 
   const data = {
@@ -53,6 +55,7 @@ const ConverterValue = () => {
    async function fetchValues () {
     if (convertFrom && convertTo) {
       const resolve = await axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${convertFrom}/${convertTo}.json`);
+      setStandartConvert(resolve.data[convertTo]);
       setConvertToValue(convertFromValue * resolve.data[convertTo]);
     }
   }
@@ -104,6 +107,12 @@ const ConverterValue = () => {
           closeModal={closeTo}
         />
       </div>
+      <BaseConvert
+        baseSymbol={convertFrom}
+        equalSymbol={convertTo}
+        equalValue={standartConvert}
+      />
+      <p className="converter-value__description">The online currency converter is a tool that will allow you to calculate the ratios of the current exchange rates of funds around the world for today.</p>
     </div>
   )
 }

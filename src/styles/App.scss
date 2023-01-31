@@ -126,3 +126,17 @@ body {
 .converter-value__btn-title {
   width: 50px;
 }
+
+.converter-value__description {
+  max-width: 375px;
+  margin-top: 20px;
+  @include app-font(17px, 14px);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+//* base-convert **/
+
+.base-convert {
+  margin-top: 15px;
+  @include app-font(17px, 14px);
+}

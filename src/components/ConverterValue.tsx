@@ -1,22 +1,25 @@
 import axios from "axios";
 import { useEffect, useState, useMemo } from "react"
 import { ISymbols } from "../types/types";
-import { useAppSelector } from "../app/hooks";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { isOpenFromModal, isOpenToModal } from "../app/feautures/modalSlice";
 import { openFrom, openTo, closeTo, closeFrom } from "../app/feautures/modalSlice";
+import { baseCurrency } from "../app/feautures/exchangeSlice";
+import { changeCurrency } from "../app/feautures/exchangeSlice";
 import ConverterInput from "./ConverterInput"
 import BaseConvert from "./BaseConvert";
 
 const ConverterValue = () => {
 
-  const CONVERT_FROM = 'usd';
-  const CONVERT_TO = 'rub';
+  const CONVERT_TO = 'usd';
 
+  const dispatch = useAppDispatch();
   const isOpenFrom = useAppSelector(isOpenFromModal);
   const isOpenTo = useAppSelector(isOpenToModal);
+  const currencyExchange = useAppSelector(baseCurrency);
 
-  const [convertTo, setConvertTo] = useState(CONVERT_FROM);
-  const [convertFrom, setConvertFrom] = useState(CONVERT_TO);
+  const [convertTo, setConvertTo] = useState(CONVERT_TO);
+  const [convertFrom, setConvertFrom] = useState(currencyExchange);
   const [convertFromValue, setConvertFromValue] = useState(1);
   const [convertToValue, setConvertToValue] = useState(0);
   const [standartConvert, setStandartConvert] = useState(0);
@@ -70,6 +73,7 @@ const ConverterValue = () => {
     if (convertTo === abbr) {
       setConvertTo(convertFrom);
     }
+    dispatch(changeCurrency(abbr));
     setConvertFrom(abbr);
   }
 

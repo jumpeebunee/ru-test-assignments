@@ -1,19 +1,17 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { IExchange } from "../types/types";
-import { exchangeContent } from "../app/feautures/exchangeData";
+import { exchangeContent } from "../app/feautures/exchangeSlice";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { addData } from "../app/feautures/exchangeData";
+import { addData } from "../app/feautures/exchangeSlice";
+import { baseCurrency } from "../app/feautures/exchangeSlice";
 import ValutesExchange from "../components/ValutesExchange";
 
 const ValutesPage = () => {
-
-  const CURENCY_EXCHANGE = 'rub';
-
   const exchangeContentData = useAppSelector(exchangeContent);
   const dispatch = useAppDispatch();
 
-  const [currentExchange, setCurrentExchange] = useState(CURENCY_EXCHANGE);
+  const currentExchange = useAppSelector(baseCurrency);
 
   useEffect(()  => {
     if (exchangeContentData.length === 0) fetchCurency();
@@ -32,20 +30,14 @@ const ValutesPage = () => {
     dispatch(addData(arrData));
   }
 
-  const handleChange = (arg: string) => {
-    setCurrentExchange(arg);
-    fetchCurency();
-  }
-
   return (
     <div className="main-page__content">
       <div className="valutes-page__content">
-        <p className="valutes-page__description">Converts 1 unit of your currency to other currencies, you can click on the selected currency in the list to change it.</p>
-        <h2>Your current exchange: {currentExchange}</h2>
+        <p className="valutes-page__description">Converts 1 unit of your currency to other currencies. You can change your currency on the home page.</p>
+        <h2>Base currency: {currentExchange}</h2>
       </div>
       <ValutesExchange
         exchangeData={exchangeContentData}
-        handleChange={handleChange}
       />
     </div>
   )

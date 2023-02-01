@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import modalReducer from './feautures/modalSlice';
-import exchangeReducer from "./feautures/exchangeData";
+import exchangeReducer from "./feautures/exchangeSlice";
 
 export const store = configureStore({
   reducer: {

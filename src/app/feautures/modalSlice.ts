@@ -4,10 +4,10 @@ import { RootState } from "../store";
 const initialState = {
   isOpenFrom: false,
   isOpenTo: false,
-}
+};
 
 const modalSlice = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState,
   reducers: {
     openFrom(state) {
@@ -22,10 +22,10 @@ const modalSlice = createSlice({
     closeTo(state) {
       state.isOpenTo = false;
     },
-  }
-})
+  },
+});
 
 export default modalSlice.reducer;
-export const isOpenFromModal = (state:RootState) => state.modal.isOpenFrom;
-export const isOpenToModal = (state:RootState) => state.modal.isOpenTo;
-export const {openFrom, openTo, closeTo, closeFrom} = modalSlice.actions;
+export const isOpenFromModal = (state: RootState) => state.modal.isOpenFrom;
+export const isOpenToModal = (state: RootState) => state.modal.isOpenTo;
+export const { openFrom, openTo, closeTo, closeFrom } = modalSlice.actions;

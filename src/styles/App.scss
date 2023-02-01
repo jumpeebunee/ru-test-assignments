@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 $black-color: #141414;
 
@@ -53,7 +53,7 @@ body {
   font-weight: 300;
   font-size: 22px;
   line-height: 27px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 //* converter-value *//
@@ -82,7 +82,7 @@ body {
   padding: 0px 0px 0px 35px;
   width: 100%;
   height: 60px;
-  border: 1px solid #E1E3E9;
+  border: 1px solid #e1e3e9;
   background-color: transparent;
   border-radius: 40px;
 }
@@ -92,7 +92,7 @@ body {
   padding-right: 20px;
   height: 100%;
   text-align: right;
-  border-right: solid 1px #E1E3E9;
+  border-right: solid 1px #e1e3e9;
   @include app-font(16px, 19px);
 }
 
@@ -118,18 +118,18 @@ body {
   width: 261px;
   padding: 20px;
   position: absolute;
-  @include app-flex(flex-start,flex-end);
+  @include app-flex(flex-start, flex-end);
   top: 120%;
   flex-direction: column;
   right: 0;
   gap: 10px;
-  background: #FCFCFC;
+  background: #fcfcfc;
   border: 1px solid rgba(225, 227, 233, 0.4);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   opacity: 0;
   visibility: hidden;
-  transition: all ease .4s;
+  transition: all ease 0.4s;
 }
 
 .converter-value__list_active {
@@ -169,7 +169,6 @@ body {
   margin-top: 15px;
   @include app-font(17px, 14px);
 }
-
 
 //* valutes *//
 
@@ -216,13 +215,13 @@ body {
   p {
     font-weight: 300;
     @include app-font(19px, 16px);
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   h2 {
     margin-top: 10px;
     font-weight: 300;
     @include app-font(19px, 16px);
-    color: #FFFFFF; 
+    color: #ffffff;
   }
 }

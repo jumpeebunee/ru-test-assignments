@@ -1,15 +1,21 @@
-import { FC } from "react"
+import { FC } from "react";
 
 interface BaseConvertProps {
-  baseSymbol: string,
-  equalSymbol: string,
-  equalValue: number,
+  baseSymbol: string;
+  equalSymbol: string;
+  equalValue: number;
 }
 
-const BaseConvert:FC<BaseConvertProps> = ({baseSymbol, equalValue, equalSymbol}) => {
+const BaseConvert: FC<BaseConvertProps> = ({
+  baseSymbol,
+  equalValue,
+  equalSymbol,
+}) => {
   return (
-    <div className="converter-value__description">1 {baseSymbol} = {equalValue} {equalSymbol}</div>
-  )
-}
+    <div className="converter-value__description">
+      1 {baseSymbol} = {equalValue} {equalSymbol}
+    </div>
+  );
+};
 
-export default BaseConvert
+export default BaseConvert;

@@ -1,9 +1,9 @@
 export type ISymbols = {
-  abbr: string,
-  country: string,
-}
+  abbr: string;
+  country: string;
+};
 
 export type IExchange = {
-  country: string,
-  val: number,
-}
+  country: string;
+  val: number;
+};

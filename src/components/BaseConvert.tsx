@@ -12,7 +12,7 @@ const BaseConvert: FC<BaseConvertProps> = ({
   equalSymbol,
 }) => {
   return (
-    <div className="converter-value__description">
+    <div data-testId="convertation" className="converter-value__description">
       1 {baseSymbol} = {equalValue} {equalSymbol}
     </div>
   );

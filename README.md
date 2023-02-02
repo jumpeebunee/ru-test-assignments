@@ -12,3 +12,9 @@ By default, the user should have a "base" currency that he can configure. The ba
 - SCSS,
 - Typescript,
 - React-testing-librar;
+
+## Preview
+### Main page
+![image](https://user-images.githubusercontent.com/105386597/216275788-0b991de5-dcea-4d9b-9ccd-3fc185846873.png)
+### Valutes page
+![image](https://user-images.githubusercontent.com/105386597/216275981-b650cab1-0638-48ac-9af2-0b4a47ac9eaa.png)
